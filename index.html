@@ -31,10 +31,34 @@
     .controls{display:flex;gap:8px}
     .btn{background:var(--accent);color:white;padding:8px 12px;border-radius:8px;border:0;cursor:pointer}
     .btn.secondary{background:transparent;color:var(--accent);border:1px solid rgba(14,165,164,0.18)}
+
+    /* 右側圖片 */
+    main .photo img {
+      width: 150px;
+      height: 150px;
+      border-radius: 12px;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 16px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    main .photo img:hover {
+      transform: scale(1.05);
+    }
+
     /* small */
     @media (max-width:720px){.card{flex-direction:column} aside{width:100%}}
+
     /* dark */
     .dark{--bg:#0b1220;--card:#071229;--muted:#9aa4b2;--accent:#34d1c9;--text:#e6eef6}
+
+    /* print */
+    @media print {
+      body { background: white; color: black; }
+      .controls { display: none; }
+      .card { box-shadow: none; }
+    }
   </style>
 </head>
 <body>
@@ -76,10 +100,16 @@
           <h3>語言</h3>
           <div class="subtitle">中文（母語） · 英文（中等）</div>
         </div>
-
       </aside>
 
       <main>
+        <!-- 右側圖片加連結 -->
+        <div class="photo">
+          <a href="https://example.com" target="_blank">
+            <img src="https://qwerty930111-spec.github.io/resume_1p/photo.jpg" alt="展示圖">
+          </a>
+        </div>
+
         <section class="section">
           <h3>教育背景</h3>
           <div class="job">
@@ -108,7 +138,6 @@
             <li>工具：Git、VS Code、Excel</li>
           </ul>
         </section>
-
       </main>
     </div>
   </div>
@@ -125,11 +154,8 @@
     });
 
     // 快速填內容示範（可刪除）
-    // 若想要把名字直接換掉，可在瀏覽器按右鍵 -> 檢查 -> 修改 #name 內容。
-    // 範例：自動把某些欄位填入（開發階段用）
     (function(){
-      // 下面是示範資料，可以自行修改或刪掉
-      document.getElementById('name').textContent = '你的名字';
+      document.getElementById('name').textContent = '林廷穎';
       document.getElementById('summary').textContent = '行動商務學系學生，喜歡前端開發與資料分析，熱衷於把想法做成可用的產品。';
     })();
   </script>
